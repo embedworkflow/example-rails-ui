@@ -1,0 +1,23 @@
+<%= render "embed_workflow_scripts" %>
+
+<div>
+  <%= link_to "Back to workflows", workflows_path %>
+</div>
+
+<h1>New workflow</h1>
+
+<div>
+  <div class="EWF__workflow_form" data-after-success="openWorkflow"></div>
+</div>
+
+<script type="text/javascript">
+  var loadEmbed = function () {
+    EWF.load("<%= ENV['EMBED_WORKFLOW_PUBLISHABLE_KEY'] %>", { jwt: "<%= @embed_workflow_jwt %>" });
+  }
+
+  loadEmbed();
+
+  var openWorkflow = function (workflow) {
+    window.location = "/workflows/" + workflow.hashid;
+  }
+</script>

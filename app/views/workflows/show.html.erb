@@ -1,0 +1,13 @@
+<%= render "embed_workflow_scripts" %>
+
+<%= link_to "Back to Workflows", workflows_path %>
+
+<div class="EWF__workflow_settings" data-hashid="<%= params[:id] %>"></div>
+
+<script type="text/javascript">
+  var loadEmbed = function () {
+    EWF.load("<%= ENV['EMBED_WORKFLOW_PUBLISHABLE_KEY'] %>", { jwt: "<%= @embed_workflow_jwt %>" });
+  }
+
+  loadEmbed();
+</script>
